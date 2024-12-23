@@ -49,7 +49,7 @@ int main(){
     // launch kernel
     dim3 blockSize(32);
     dim3 gridSize((input_length + blockSize.x - 1) / blockSize.x);
-    parallel_sum_reduction<<<gridSize, blockSize>>>(gpu_inp, gpu_result, 6);
+    parallel_sum_reduction<<<gridSize, blockSize>>>(gpu_inp, gpu_result, input_length);
     // wait for all threads to finish
     cudaDeviceSynchronize();
     // copy result to host memory and print
